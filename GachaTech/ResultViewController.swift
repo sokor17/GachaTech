@@ -26,8 +26,17 @@ class ResultViewController: UIViewController {
                         UIImage(named:"monster008.png")!,
                         UIImage(named:"monster009.png")!,
                         UIImage(named:"monster010.png")!]
-        //モンスターの表示
+        //モンスターのランダム表示
         monsterView.image = monsterArray[number]
+        
+        //背景画像をモンスターによって変える
+        if number == 9{
+            haikeiView.image = UIImage (named: "bg_gold.png")
+        }else if number >= 6{
+            haikeiView.image = UIImage(named: "bg_red.pne")
+        }else {
+            haikeiView.image = UIImage(named: "bg_blue.pne")
+        }
     }
     
     //一番後ろの画像
@@ -36,7 +45,10 @@ class ResultViewController: UIViewController {
     @IBOutlet var monsterView :UIImageView!
     //モンスター画像を保存する配列
     var monsterArray:[UIImage]!
-    
+    //戻るボタン
+    @IBAction func returnButton {
+        
+    }
 
     
     

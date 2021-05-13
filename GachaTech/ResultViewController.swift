@@ -37,6 +37,9 @@ class ResultViewController: UIViewController {
         }else {
             haikeiView.image = UIImage(named: "bg_blue.png")
         }
+        
+      
+        
     }
     
     //ResultViewが呼び出されるたび発動するメソッド
@@ -85,8 +88,10 @@ class ResultViewController: UIViewController {
     @IBAction func backButton() {
         self.dismiss(animated: true, completion: nil)
     }
-
-    
+    //名前のラベル
+    @IBOutlet var nameLabel :UILabel!
+    //名前を保存する配列
+    var nameArray:[UIFont]!
     
     
     

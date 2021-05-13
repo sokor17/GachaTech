@@ -33,10 +33,46 @@ class ResultViewController: UIViewController {
         if number == 9{
             haikeiView.image = UIImage (named: "bg_gold.png")
         }else if number >= 6{
-            haikeiView.image = UIImage(named: "bg_red.pne")
+            haikeiView.image = UIImage(named: "bg_red.png")
         }else {
-            haikeiView.image = UIImage(named: "bg_blue.pne")
+            haikeiView.image = UIImage(named: "bg_blue.png")
         }
+    }
+    
+    //ResultViewが呼び出されるたび発動するメソッド
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        //アニメーションの中でもtransformさせるキーパスを設定
+        let animation = CABasicAnimation(keyPath: "transform")
+        //アニメーションの開始時の数値
+        animation.fromValue=NSNumber(value:0)
+        //アニメーション終了時の数値
+        animation.toValue=NSNumber(value:2 * Double.pi)
+        //z軸を中心としたアニメーションにする
+        animation.valueFunction=CAValueFunction(name: CAValueFunctionName.rotateZ)
+        //アニメーションの速さを指定する
+        animation.duration=5
+        //アニメーションの繰り返し
+        animation.repeatCount=Float.infinity
+        //レイヤーの選択
+        haikeiView.layer.add(animation,forKey: nil)
+        
+        //モンスターにアニメーションをつける
+        let animation2 = CABasicAnimation(keyPath: "transform")
+        //アニメーションの開始時の数値
+        animation2.fromValue=NSNumber(value:0)
+        //アニメーション終了時の数値
+        animation2.toValue=NSNumber(value:2 * Double.pi)
+        //z軸を中心としたアニメーションにする
+        animation2.valueFunction=CAValueFunction(name: CAValueFunctionName.rotateZ)
+        //アニメーションの速さを指定する
+        animation2.duration=2
+        //アニメーションの繰り返し
+        animation2.repeatCount=Float.infinity
+        //レイヤーの選択
+        monsterView.layer.add(animation2,forKey: nil)
+    
     }
     
     //一番後ろの画像
@@ -46,8 +82,8 @@ class ResultViewController: UIViewController {
     //モンスター画像を保存する配列
     var monsterArray:[UIImage]!
     //戻るボタン
-    @IBAction func returnButton {
-        
+    @IBAction func backButton() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     
